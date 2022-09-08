@@ -8,7 +8,7 @@ fn main() {
 	//TODO: use a single-line assignment to assign the components of tup1
 	// to variables `x`, `y`, and `z`, respectively
 
-	//<Your code here>
+	let (x, y, z) = tup1;
 
 	println!("x: {}, y: {}, z: {}", x, y, z);
 
@@ -23,11 +23,11 @@ fn main() {
 	// Arrays
 	//TODO: create an array containing ints 1, 2, 3, 4, and 5 and assign it to `arr1`
 
-	//<Your code here>
+	let arr1: [i32; 5] = [1, 2, 3, 4, 5];
 
 	//TODO: create an array containing 5 3's and assign it to `arr2`
 
-	//<Your code here>
+	let arr2: [i32; 5] = [3, 3, 3, 3, 3];
 
 	println!("arr1[3]: {}", arr1[3]);
 	println!("arr2[0]: {}, arr2[4]: {}", arr2[0], arr2[4]);
