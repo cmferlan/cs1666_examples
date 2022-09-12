@@ -35,8 +35,35 @@ fn main() {
 		},
 		None => println!("Got nothing :("),
 	}
+	// my code
+	let maybe_fruit = maybe_get_fruit();
+	match maybe_fruit {
+		Some(f) => match f {
+			Fruit::Apple => println!("Picked an apple!"),
+			Fruit::Banana => println!("Picked a banana!"),
+			Fruit::Cherry => println!("Picked a cherry!"),
+		},
+		None => println!("Picked nothing :("),
+	}
 }
 
 //TODO: Write your own enum, and use it with another match statement
 
-//<Your code here>
+enum Fruit {
+	Apple,
+	Banana,
+	Cherry,
+}
+
+fn maybe_get_fruit() -> Option<Fruit> {
+	let chance = rand::thread_rng().gen_range(0..100);
+
+	println!("Generated: {}", chance);
+
+	match chance {
+		0..=24 => Some(Fruit::Apple),
+		25..=49 => Some(Fruit::Banana),
+		50..=74 => Some(Fruit::Cherry),
+		_ => None,
+	}
+}

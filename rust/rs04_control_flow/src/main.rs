@@ -54,7 +54,7 @@ fn main() {
 	//TODO: Use a for loop to print out the ints from 1-10 (inclusive)
 
 	println!("The integers from 1 to 10:");
-	for int in 1..11 {
+	for int in 1..=10 {
 		println!("{int}");
 	}
 
