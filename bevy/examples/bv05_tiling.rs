@@ -46,7 +46,7 @@ fn setup(
 
 	//<Your code here>
 
-	commands.spawn_bundle(OrthographicCameraBundle::new_2d());
+	commands.spawn_bundle(Camera2dBundle::default());
 
 	let mut rng = rand::thread_rng();
 	let x_bound = WIN_W/2. - TILE_SIZE/2.;
