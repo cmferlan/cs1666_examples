@@ -67,13 +67,30 @@ fn move_player(
 		y_vel -= 5.;
 	}
 
-	player_transform.translation.x += x_vel;
-	player_transform.translation.y += y_vel;
+	if player_transform.translation.x + x_vel < -WIN_W / 2. {
+		player_transform.translation.x = -WIN_W / 2.;
+	}
+	else if player_transform.translation.x + x_vel > WIN_W / 2. {
+		player_transform.translation.x = WIN_W / 2.;
+	}
+	else {
+		player_transform.translation.x += x_vel;
+	}
+	
+	if player_transform.translation.y + y_vel < -WIN_H / 2. {
+		player_transform.translation.y = -WIN_H / 2.;
+	}
+	else if player_transform.translation.y + y_vel > WIN_H / 2. {
+		player_transform.translation.y = WIN_H / 2.;
+	}
+	else {
+		player_transform.translation.y += y_vel;
+	}
 }
 
 /* TODO: 
- * Can we slowly ramp up to speed limit instead of instantly hitting it?
- * Can we normalize behavior on different refresh rates?
- * How do we stay inside the window?
+ * Can we slowly ramp up to speed limit instead of instantly hitting it? - use some vector maths prob
+ * Can we normalize behavior on different refresh rates? - use a timer?
+ * How do we stay inside the window? - if transform goes out of bounds, normalize to window bounds
  * How do we avoid breaking the speed limit on the diagonal?
  */
