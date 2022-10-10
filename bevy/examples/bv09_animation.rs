@@ -59,6 +59,7 @@ fn main() {
 		.add_plugins(DefaultPlugins)
 		.add_startup_system(setup)
 		.add_system(move_player)
+		.add_system(animate_player.after(move_player))
 		.add_system(move_camera.after(move_player))
 		.run();
 }
@@ -188,7 +189,19 @@ fn move_player(
 // the player spritesheet
 // Don't forget to add your system to the app in `main()`!
 
-//<Your code here>
+fn animate_player(
+	time: Res<Time>,
+	mut player: Query<(&mut TextureAtlasSprite, &mut AnimationTimer, &mut Velocity), With<Player>>,
+) {
+	for (mut sprite, mut timer, vel) in player.iter_mut() {
+		if vel.velocity.x != 0. {
+			timer.0.tick(time.delta());
+			if timer.0.finished() {
+				sprite.index = (sprite.index + 1) % 4;
+			}
+		}
+	}
+}
 
 fn move_camera(
 	player: Query<&Transform, With<Player>>,
